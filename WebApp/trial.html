@@ -1,0 +1,27 @@
+
+
+<script>
+
+            function validate_form()
+            {
+                var email = document.forms["login"]["user"].value;
+                var password = document.forms["login"]["pass"].value;
+                if (empty(email) || empty(password)) 
+                {
+                    //Message to supply both
+                    alert('Please enter your email and/or password!');
+                }
+                else{
+                    if((!((email.indexOf(".") > 0) &&
+                           (email.indexOf("@") > 0)) ||
+                           /[^a-zA-Z0-9.@_-]/.test(email)))
+                        alert('The format of the email supplied is invalid!');
+                    else if(field.length < 6)
+                        alert("Passwords must be at least 6 characters!");
+                    else if (! /[a-z]/.test(password) ||
+                             ! /[A-Z]/.test(password) ||
+                             ! /[0-9]/.test(password))
+                         alert("Passwords require one each of a-z, A-Z and 0-9!"); 
+                    }
+            } 
+    </script>
