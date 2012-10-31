@@ -1,0 +1,66 @@
+<html><head><title>An Example Form</title>
+<style>.signup { border: 1px solid #999999;
+	font: normal 14px helvetica; color:#444444; }</style>
+
+<script>
+function validate(form) {
+	fail  = validateForename(form.forename.value)
+	fail += validateSurname(form.surname.value)
+	fail += validateEmail(form.email.value)
+	fail += validatePassword(form.password.value)
+	if (fail == "") return true
+	else { alert(fail); return false }
+}
+</script></head><body>
+
+<table class="signup" border="0" cellpadding="2"
+	cellspacing="5" bgcolor="#eeeeee">
+<th colspan="2" align="center"> Signup Form</th>
+<form method="post" action="register_user.php"
+	onSubmit="return validate(this)">
+	 <tr><td>Forename</td><td><input type="text" maxlength="32"
+	name="forename" /></td>
+</tr><tr><td>Surname</td><td><input type="text" maxlength="32"
+	name="surname" /></td>
+</tr><tr><td>Email</td><td><input type="text" maxlength="64"
+	name="email" /></td>
+</tr><tr><td>Password</td><td><input type="text" maxlength="12"
+	name="password" /></td>
+</tr><tr><td colspan="2" align="center">
+	<input type="submit" value="Signup" /></td>
+</tr></form></table>
+        
+
+<script>
+function validateForename(field) {
+	if (field == "") return "No Forename was entered.\n"
+	return ""
+}
+
+function validateSurname(field) {
+	if (field == "") return "No Surname was entered.\n"
+	return ""
+}
+
+function validateEmail(field) {
+	if (field == "") return "No Email was entered.\n"
+		else if (!((field.indexOf(".") > 0) &&
+			       (field.indexOf("@") > 0)) ||
+			       /[^a-zA-Z0-9.@_-]/.test(field))
+		return "The Email address is invalid.\n"
+	return ""
+}
+function validatePassword(field) {
+	if (field == "") return "No Password was entered.\n"
+	else if (field.length < 6)
+		return "Passwords must be at least 6 characters.\n"
+	else if (! /[a-z]/.test(field) ||
+			 ! /[A-Z]/.test(field) ||
+		     ! /[0-9]/.test(field))
+		return "Passwords require one each of a-z, A-Z and 0-9.\n"
+	return ""
+}
+
+
+</script></body></html>
+
